@@ -12,7 +12,7 @@ env:
   IBM_CLOUD_ORG: ulidder@us.ibm.com
   MANIFEST_NAME: manifest.yml
   MANIFEST_LOCATION: .
-  IBM_CLOUD_API: ${{secrets.IBM_CLOUD_API_KEY}}
+  IBM_CLOUD_API_KEY: ${{secrets.IBM_CLOUD_API_KEY}}
 
 jobs:
   setup-build-publish-deploy:
@@ -21,7 +21,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2      
-      
+
       # A GitHub Action for serializing workflow runs
       - name: Turnstyle
         uses: softprops/turnstyle@v1
@@ -31,7 +31,7 @@ jobs:
       - uses: upkarlidder/cf-build-deploy@main
         with:
           github-sha: $GITHUB_SHA
-          ibm-cloud-api-key: $IBM_CLOUD_API
+          ibm-cloud-api-key: $IBM_CLOUD_API_KEY
           ibm-cloud-org: $IBM_CLOUD_ORG
           ibm-cloud-resource-group: $IBM_CLOUD_GROUP
           ibm-cloud-region: $IBM_CLOUD_REGION
